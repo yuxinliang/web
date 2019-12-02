@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" http-equiv="refresh" content="30">
+	<title>为 HTML 添加新元素</title>
+	<script>
+		document.createElement("myHero")
+	</script>
+	<style>
+		myHero {
+			display: block;
+			background-color: #ddd;
+			padding: 50px;
+			font-size: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<img id="scream" src="images/border.png" alt="The Scream" width="100" height="20">
+	<p>Canvas:</p>
+	<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+	</canvas>
+	<script>
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.fillStyle = "#FF0000";
+		ctx.fillRect(0, 0, 150, 75);
+
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.moveTo(0, 0);
+		ctx.lineTo(200, 100);
+		ctx.stroke();
+
+
+		ctx.beginPath();
+		ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+		ctx.stroke();
+
+		var ctx = c.getContext("2d");
+		ctx.font = "30px Arial";
+		// ctx.fillText("Hello World", 10, 50);
+		ctx.strokeText("Hello World", 10, 50);
+
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		var img = document.getElementById("scream");
+
+		img.onload = function () {
+			ctx.drawImage(img, 10, 10);
+		} 
+	</script>
+	<h1>我的第一个标题</h1>
+	<p>我的第一个段落。</p>
+	<myHero>我的第一个新元素</myHero>
+</body>
+
+</html>
