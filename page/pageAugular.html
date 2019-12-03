@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="shortcut icon" href="images/border.png">
+	<meta charset="utf-8" http-equiv="refresh" content="30">
+	<title>Augular</title>
+	<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+	<style>
+		input.ng-invalid {
+			background-color: lightblue;
+		}
+	</style>
+</head>
+
+<body ng-app="myApp">
+	<!-- 通过 ng-directives 扩展了 HTML。
+		ng-app 指令定义一个 AngularJS 应用程序。	
+		ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+		ng-bind 指令把应用程序数据绑定到 HTML 视图。 -->
+	<!-- <div ng-app="" ng-init="name='John'">
+		<p>名字 : <input type="text" ng-model="name"></p>
+		<p>姓名 : <span ng-bind='name'></span></p>
+		<h6>Hello {{name}}</h6>
+	</div> -->
+	<!-- <div ng-app="myApp" ng-init="names=['Jani','Hege','Kai']" ng-controller="myCtrl">
+		名: <input type="text" ng-model="firstName"><br>
+		姓: <input type="text" ng-model="lastName"><br>
+		<br>
+		姓名: {{firstName + " " + lastName}}
+		<p>使用 ng-repeat 来循环数组</p>
+		<ul>
+			<li ng-repeat="x in names">
+				{{ x }}
+			</li>
+		</ul>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function ($scope) {
+			$scope.firstName = "John";
+			$scope.lastName = "Doe";
+		});
+	</script> -->
+	<form ng-app="" name="myForm">
+		Email:
+		<!-- 文本域添加了 required 属性，该值是必须的，如果为空则是不合法的。 -->
+		<input type="email" name="myAddress" ng-model="text" required>
+		<span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+		{{myForm.myAddress.$valid}}
+		{{myForm.myAddress.$dirty}}
+		{{myForm.myAddress.$touched}}
+	</form>
+	<runoob-directive></runoob-directive>
+	<div runoob-directive></div>
+	<!-- 你必须设置 restrict 的值为 "C" 才能通过类名来调用指令。 -->
+	<!-- <div class="runoob-directive"></div> -->
+
+	<!-- restrict : "M",
+	replace : true,
+	注意： 我们需要在该实例添加 replace 属性， 否则评论是不可见的。
+	注意： 你必须设置 restrict 的值为 "M" 才能通过注释来调用指令 -->
+	<!-- directive: runoob-directive -->
+
+	<!-- 注意： 通过设置 restrict 属性值为 "A" 来设置指令只能通过 HTML 元素的属性来调用。 -->
+	<!-- <div runoob-directive></div> -->
+
+	<!--restrict  E 作为元素名使用
+		A 作为属性使用
+		C 作为类名使用
+		M 作为注释使用 -->
+	<script>
+		var app = angular.module("myApp", []);
+		app.directive("runoobDirective", function () {
+			return {
+				template: "<h3>自定义指令!</h3>"
+			};
+		});
+	</script>
+</body>
+
+</html>

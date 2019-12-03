@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="shortcut icon" href="images/border.png">
+	<meta charset="utf-8" http-equiv="refresh" content="30">
+	<title>React</title>
+	<!-- - React 的核心库 -->
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<!-- - 提供与 DOM 相关的功能 -->
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<!-- 生产环境中不建议使用 -->
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		ReactDOM.render(
+			<h1>HW</h1>,
+			document.getElementById('example')
+		);
+		class Clock extends React.Component {
+			render() {
+				return (
+					<div>
+						<h1>NIUB</h1>
+						<h2>现在是 {this.props.date.toLocaleTimeString()}.</h2>
+					</div>
+				);
+			}
+		}
+
+		function tick() {
+			ReactDOM.render(
+				<Clock date={new Date()} />,
+				document.getElementById('example')
+			);
+		}
+
+		setInterval(tick, 1000);
+	</script>
+</body>
+
+</html>
